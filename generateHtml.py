@@ -19,7 +19,7 @@ def convert_dict(dct):
             "NewRating": e['count'],
             "EndTime": datetime.datetime.strptime(e['diagnosed_date'], '%Y-%m-%d').timestamp(),
             "Place": -1,
-            "StandingsUrl": "/",
+            "StandingsUrl": "#",
         })
         old_rating = e['count']
     return ret
