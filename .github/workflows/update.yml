@@ -36,7 +36,7 @@ jobs:
           DISPLAY: :99
       - name: Update
         run: |
-          git add -N .
+          git add -N index.html
           if ! git diff --exit-code --quiet
           then
             git config user.name github-actions
