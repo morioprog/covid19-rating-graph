@@ -8,5 +8,5 @@
   [![Try!](https://img.shields.io/badge/Try!-GitHub%20Pages-blue?logo=github&logo_width=400)](https://morioprog.github.io/covid19-rating-graph/)
   [![Update HTML](https://github.com/morioprog/covid19-rating-graph/actions/workflows/update.yml/badge.svg?branch=main)](https://github.com/morioprog/covid19-rating-graph/actions/workflows/update.yml)
 
-  ![最新のグラフ](img/ogp.png)
+  [![最新のグラフ](img/ogp.png)](https://morioprog.github.io/covid19-rating-graph/)
 </div>
