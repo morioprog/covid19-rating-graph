@@ -68,7 +68,7 @@ with open('index.html', mode='w') as f:
         <meta property="og:title" content="COVID-19 Rating Graph" />
         <meta property="og:description" content="レーティング：{old_rating}→{new_rating} ({rating_diff}) {":(" if old_rating < new_rating else ":)"}\n{S_HIGHEST if is_highest else ""}({last_update}更新)" />
         <meta property="og:site_name" content="COVID-19 Rating Graph" />
-        <meta property="og:image" content="https://raw.githubusercontent.com/morioprog/covid19-rating-graph/main/img/ogp.png" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/morioprog/covid19-rating-graph/main/img/ogp.png?{int(datetime.datetime.now().timestamp())}" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@morio_prog" />
     </head>
