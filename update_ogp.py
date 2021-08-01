@@ -1,4 +1,5 @@
 import os
+import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
@@ -30,6 +31,7 @@ try:
     update_url = driver.find_element_by_css_selector('input.FormControl')
     update_url.send_keys('https://morioprog.github.io/covid19-rating-graph/')
     update_url.send_keys(Keys.ENTER)
+    time.sleep(20)  # ???
 except:
     pass
 
