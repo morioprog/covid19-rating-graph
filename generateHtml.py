@@ -37,6 +37,14 @@ with open('index.html', mode='w') as f:
         <link href="https://fonts.googleapis.com/css?family=Squada+One" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="https://img.atcoder.jp/public/7cd93c2/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <meta property="og:url" content="https://morioprog.github.io/covid19-rating-graph/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="COVID-19 Rating Graph" />
+        <meta property="og:description" content="最終更新: {last_update[:-6]} / {old_rating}→{new_rating}  ({"+" if old_rating < new_rating else ""}{new_rating - old_rating}) {":(" if old_rating < new_rating else ":)"}" />
+        <meta property="og:site_name" content="COVID-19 Rating Graph" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/morio_prog/covid19-rating-graph/main/img/ogp.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@morio_prog" />
     </head>
     <body>
         <div>
@@ -65,6 +73,28 @@ with open('index.html', mode='w') as f:
         <script type="text/javascript" src="https://img.atcoder.jp/public/fc4b538/js/lib/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="https://img.atcoder.jp/public/ad3eaad/js/rating-graph.js"></script>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <script>
+            const rating_history = {convert_dict(data)};
+        </script>
+    </body>
+</html>
+''')
+
+with open('ogp.html', mode='w') as f:
+    f.write(f'''\
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Squada+One" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="https://img.atcoder.jp/public/7cd93c2/css/bootstrap.min.css">
+    </head>
+    <body style="text-align:center;">
+        <canvas id="ratingStatus" width="640" height="80"></canvas><br>
+        <canvas id="ratingGraph" width="640" height="360"></canvas><br>
+        <script type="text/javascript" src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+        <script type="text/javascript" src="https://img.atcoder.jp/public/fc4b538/js/lib/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="https://img.atcoder.jp/public/ad3eaad/js/rating-graph.js"></script>
         <script>
             const rating_history = {convert_dict(data)};
         </script>
