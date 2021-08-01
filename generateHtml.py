@@ -26,8 +26,10 @@ def convert_dict(dct):
 
 
 with open('index.html', mode='w') as f:
+    S_HIGHEST = "Highestを更新してしまいました...\n"
     old_rating = data[-2]['count']
     new_rating = data[-1]['count']
+    is_highest = max(e['count'] for e in data[:-1]) < data[-1]['count']
     f.write(f'''\
 <html>
     <head>
@@ -40,7 +42,7 @@ with open('index.html', mode='w') as f:
         <meta property="og:url" content="https://morioprog.github.io/covid19-rating-graph/" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="COVID-19 Rating Graph" />
-        <meta property="og:description" content="レーティング：{old_rating}→{new_rating} ({"+" if old_rating < new_rating else ""}{new_rating - old_rating}) {":(" if old_rating < new_rating else ":)"} ({last_update}更新)" />
+        <meta property="og:description" content="レーティング：{old_rating}→{new_rating} ({"+" if old_rating < new_rating else ""}{new_rating - old_rating}) {":(" if old_rating < new_rating else ":)"}\n{S_HIGHEST if is_highest else ""}({last_update}更新)" />
         <meta property="og:site_name" content="COVID-19 Rating Graph" />
         <meta property="og:image" content="https://raw.githubusercontent.com/morioprog/covid19-rating-graph/main/img/ogp.png" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -62,7 +64,7 @@ with open('index.html', mode='w') as f:
                     <li>最終更新: {last_update}</li>
                 </ul>
                 <a href="https://twitter.com/share"
-                    data-text="東京都新規陽性者数 ({last_update[:-6]}更新)\nレーティング：{old_rating}→{new_rating} ({"+" if old_rating < new_rating else ""}{new_rating - old_rating}) {":(" if old_rating < new_rating else ":)"}\n#COVID19RatingGraph\n"
+                    data-text="東京都新規陽性者数 ({last_update[:-6]}更新)\nレーティング：{old_rating}→{new_rating} ({"+" if old_rating < new_rating else ""}{new_rating - old_rating}) {":(" if old_rating < new_rating else ":)"}\n{S_HIGHEST if is_highest else ""}#COVID19RatingGraph\n"
                     class="twitter-share-button"
                     data-show-count="false">
                     Tweet
