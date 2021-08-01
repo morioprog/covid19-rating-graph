@@ -34,10 +34,22 @@ jobs:
           python screenshot.py
         env:
           DISPLAY: :99
+      - name: Run update_ogp.py
+        run: |
+          python update_ogp.py
+        env:
+          TWITTER_EMAIL: ${{ secrets.TWITTER_EMAIL }}
+          TWITTER_PASSWORD: ${{ secrets.TWITTER_PASSWORD }}
+          TWITTER_PHONE: ${{ secrets.TWITTER_PHONE }}
+          DISPLAY: :99
       - name: Update
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add index.html img/ogp.png img/graph.png
-          git commit -m "Update HTML"
-          git push
+          git add -N index.html
+          if ! git diff --exit-code --quiet
+          then
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            git add index.html img/ogp.png img/graph.png
+            git commit -m "Update HTML"
+            git push
+          fi
