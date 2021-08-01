@@ -42,7 +42,7 @@ with open('index.html', mode='w') as f:
         <meta property="og:title" content="COVID-19 Rating Graph" />
         <meta property="og:description" content="最終更新: {last_update[:-6]} / {old_rating}→{new_rating}  ({"+" if old_rating < new_rating else ""}{new_rating - old_rating}) {":(" if old_rating < new_rating else ":)"}" />
         <meta property="og:site_name" content="COVID-19 Rating Graph" />
-        <meta property="og:image" content="https://raw.githubusercontent.com/morio_prog/covid19-rating-graph/main/img/ogp.png" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/morioprog/covid19-rating-graph/main/img/ogp.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@morio_prog" />
     </head>
