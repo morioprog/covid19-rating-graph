@@ -14,6 +14,7 @@ try:
     username.send_keys(os.environ['TWITTER_EMAIL'])
     password.send_keys(os.environ['TWITTER_PASSWORD'])
     password.send_keys(Keys.ENTER)
+    print('ログイン')
 except:
     pass
 
@@ -23,6 +24,7 @@ try:
     phone = driver.find_element_by_id('challenge_response')
     phone.send_keys(os.environ['TWITTER_PHONE'])
     phone.send_keys(Keys.ENTER)
+    print('本人認証')
 except:
     pass
 
@@ -32,6 +34,7 @@ try:
     update_url.send_keys('https://morioprog.github.io/covid19-rating-graph/')
     update_url.send_keys(Keys.ENTER)
     time.sleep(20)  # ???
+    print('OGP更新')
 except:
     pass
 
