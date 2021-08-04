@@ -208,6 +208,7 @@ if __name__ == '__main__':
 {'Highestを更新してしまいました...' if max(e['count'] for e in data[:-1]) < data[-1]['count'] else ''}
 #COVID19RatingGraph
 '''
-    tweet_graph(tweet, 'img/ogp.png')
+    tweet_graph(
+        tweet + 'https://morioprog.github.io/covid19-rating-graph/', 'img/ogp.png')
     generate_index_html(dct, tweet)
     sys.exit(0)
