@@ -5,7 +5,8 @@
     </a>
   </h1>
 
-  [![Try!](https://img.shields.io/badge/Try!-GitHub%20Pages-blue?logo=github&logo_width=400)](https://morioprog.github.io/covid19-rating-graph/)
+  [![Try!](https://img.shields.io/badge/Try!-GitHub%20Pages-blue?logo=github)](https://morioprog.github.io/covid19-rating-graph/)
+  [![Follow @covid19_rating](https://img.shields.io/badge/Follow-@covid19__rating-00aced?logo=twitter)](https://twitter.com/covid19_rating)
   [![Update HTML](https://github.com/morioprog/covid19-rating-graph/actions/workflows/update.yml/badge.svg?branch=main)](https://github.com/morioprog/covid19-rating-graph/actions/workflows/update.yml)
 
   [![最新のグラフ](img/ogp.png)](https://morioprog.github.io/covid19-rating-graph/)
