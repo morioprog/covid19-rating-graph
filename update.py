@@ -120,7 +120,7 @@ def tweet_graph(tweet, img):
     AT = os.environ['TWITTER_ACCESS_TOKEN']
     AS = os.environ['TWITTER_ACCESS_TOKEN_SECRET']
     CK = os.environ['TWITTER_API_KEY']
-    CS = os.environ['TWITTER_API_KEY_SECRET']
+    CS = os.environ['TWITTER_API_SECRET_KEY']
     auth = tweepy.OAuthHandler(CK, CS)
     auth.set_access_token(AT, AS)
     api = tweepy.API(auth)
