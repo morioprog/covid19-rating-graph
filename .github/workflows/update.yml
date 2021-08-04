@@ -29,19 +29,16 @@ jobs:
       - name: Update
         run: |
           mkdir -p img
-          python update.py
-        env:
-          DISPLAY: :99
-          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
-          TWITTER_API_SECRET_KEY: ${{ secrets.TWITTER_API_SECRET_KEY }}
-          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
-          TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
-      - name: Commit
-        run: |
-          if [ $? -eq 0 ]; then
+          if python update.py; then
             git config user.name github-actions
             git config user.email github-actions@github.com
             git add index.html img/ogp.png img/graph.png lastUpdate.txt
             git commit -m "Update index.html and images"
             git push
           fi
+        env:
+          DISPLAY: :99
+          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_SECRET_KEY: ${{ secrets.TWITTER_API_SECRET_KEY }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
