@@ -58,7 +58,7 @@ def convert_dict(dct):
             "ContestName": "東京都新規陽性者数の遷移",
             "OldRating": old_rating,
             "NewRating": e['count'],
-            "EndTime": datetime.datetime.strptime(e['diagnosed_date'], '%Y-%m-%d').timestamp(),
+            "EndTime": datetime.datetime.strptime(f"{e['diagnosed_date']}+0000", '%Y-%m-%d%z').timestamp(),
             "Place": -1,
             "StandingsUrl": "#",
         })
@@ -151,10 +151,14 @@ def generate_index_html(dct, tweet):
     <body>
         <div>
             <div class="center">
-                <h1>COVID-19 Rating Graph</h1>
+                <h1><a href="https://morioprog.github.io/covid19-rating-graph/">COVID-19 Rating Graph</a></h1>
                 <h4>完全に<span class="emphasize">非公式</span>です。</h4>
                 <canvas id="ratingStatus" width="640" height="80"></canvas><br>
-                <canvas id="ratingGraph" width="640" height="360"></canvas><br>
+                <canvas id="ratingGraph" width="640" height="360"></canvas><br><br>
+                <input type="date" id="since"> 〜
+                <input type="date" id="until">
+                <input type="button" value="表示" onclick="filterDate()">
+                <br><br>
             </div>
             <div class="ul-center">
                 <ul>
@@ -184,7 +188,30 @@ def generate_index_html(dct, tweet):
         <script type="text/javascript" src="https://img.atcoder.jp/public/ad3eaad/js/rating-graph.js"></script>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         <script>
-            const rating_history = {dct};
+            let rating_history = {dct};
+
+            const url = new URL(window.location.href);
+            const params = url.searchParams;
+            const since = Date.parse(params.get('since')) / 1000 || rating_history[0]['EndTime'];
+            const until = Date.parse(params.get('until')) / 1000 || rating_history[rating_history.length - 1]['EndTime'];
+
+            const since_form = document.getElementById('since');
+            const until_form = document.getElementById('until');
+
+            const sec2datestr = (sec) => new Date(sec * 1000).toISOString().substring(0, 10);
+            since_form.value = sec2datestr(since);
+            until_form.value = sec2datestr(until);
+
+            const filterDate = () => {{
+                params.set('since', since_form.value);
+                params.set('until', until_form.value);
+                location.href = url;
+            }};
+
+            const filtered_rating_history = rating_history.filter((e) => since <= e['EndTime'] && e['EndTime'] <= until);
+            if (filtered_rating_history.length > 0) {{
+                rating_history = filtered_rating_history;
+            }}
         </script>
     </body>
 </html>
